@@ -3,9 +3,9 @@
   :description "A demo of interactive image based development in Common Lisp, created specially for YouTube video."
   :author "Alexander Artemenko <svetlyak.40wt@gmail.com>"
   :license "Unlicense"
-  :homepage "https://40ants.com/lisp-interactive-demo/"
-  :source-control (:git "https://github.com/40ants/lisp-interactive-demo")
-  :bug-tracker "https://github.com/40ants/lisp-interactive-demo/issues"
+  :homepage "https://40ants.com/interactive-demo/"
+  :source-control (:git "https://github.com/40ants/interactive-demo")
+  :bug-tracker "https://github.com/40ants/interactive-demo/issues"
   :class :40ants-asdf-system
   :defsystem-depends-on ("40ants-asdf-system")
   :pathname "src"
