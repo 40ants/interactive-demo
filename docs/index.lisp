@@ -50,7 +50,8 @@
 
 ![Quicklisp](http://quickdocs.org/badge/interactive-demo.svg)
 "
-  (@installation section))
+  (@installation section)
+  (@demo section))
 
 
 (defsection-copy @readme @index)
