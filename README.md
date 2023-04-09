@@ -25,6 +25,14 @@ SLYNK_PORT=7000 roswell/demo
 ```
 Connect to it using `SLY` and play with content of the `src/core.lisp` file.
 
+<a id="x-28INTERACTIVE-DEMO-DOCS-2FINDEX-3A-3A-40DEMO-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
+
+## Demo
+
+Here is how this demo looks like:
+
+![](docs/demo.gif)
+
 
 [faff]: https://github.com/40ants/lisp-interactive-demo/actions
 
