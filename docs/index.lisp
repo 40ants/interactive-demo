@@ -81,5 +81,5 @@ Connect to it using SLY and play with content of the `src/core.lisp` file.
   """
 Here is how this demo looks like:
 
-![](demo.gif)
+![](docs/demo.gif)
 """)
