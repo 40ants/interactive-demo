@@ -1,0 +1,17 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '(interactive-demo) :silent t))
+
+(defpackage :ros.script.roswelldemo
+  (:use :cl))
+(in-package :ros.script.roswelldemo)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (interactive-demo/core:main))
+;;; vim: set ft=lisp lisp:
