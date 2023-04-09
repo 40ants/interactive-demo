@@ -42,8 +42,9 @@
                                    "TODO"
                                    "Unlicense"
                                    "REPL"
+                                   "SLY"
+                                   "CL-RAYLIB"
                                    "GIT"))
-  (interactive-demo system)
   "
 [![](https://github-actions.40ants.com/40ants/lisp-interactive-demo/matrix.svg?only=ci.run-tests)](https://github.com/40ants/lisp-interactive-demo/actions)
 
