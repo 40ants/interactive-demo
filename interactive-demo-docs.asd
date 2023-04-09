@@ -7,5 +7,4 @@
   :source-control (:git "https://github.com/40ants/interactive-demo")
   :bug-tracker "https://github.com/40ants/interactive-demo/issues"
   :pathname "docs"
-  :depends-on ("interactive-demo"
-               "interactive-demo-docs/index"))
+  :depends-on ("interactive-demo-docs/index"))

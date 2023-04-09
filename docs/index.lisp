@@ -74,3 +74,11 @@ SLYNK_PORT=7000 roswell/demo
 
 Connect to it using SLY and play with content of the `src/core.lisp` file.
 """)
+
+
+(defsection @demo (:title "Demo")
+  """
+Here is how this demo looks like:
+
+![](demo.gif)
+""")
