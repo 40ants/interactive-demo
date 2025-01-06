@@ -31,7 +31,7 @@ Connect to it using `SLY` and play with content of the `src/core.lisp` file.
 
 Here is how this demo looks like:
 
-![](docs/demo.gif)
+![](/home/runner/work/interactive-demo/interactive-demo/docs/demo.gif)
 
 
 [faff]: https://github.com/40ants/lisp-interactive-demo/actions
