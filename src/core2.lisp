@@ -20,7 +20,6 @@
   (:import-from #:3d-vectors
                 #:vec)
   (:import-from #:40ants-slynk)
-  (:import-from #:serapeum)
   (:nicknames #:interactive-demo/core)
   (:export #:hello
            #:make-hello
@@ -28,14 +27,6 @@
            #:main))
 (in-package #:interactive-demo)
 
-
-(defvar *color-names*
-  (serapeum:dict raylib:+red+
-                 "red"
-                 raylib:+green+
-                 "green"
-                 raylib:+blue+
-                 "blue"))
 
 (defclass object ()
   ((position :initarg :pos
@@ -46,6 +37,9 @@
          :type float
          :initform 2.0
          :accessor object-size)
+   (relative-speed :initform 1.0
+                   :type float
+                   :reader relative-speed)
    (distance-from-center :initarg :distance
                          :type float
                          :initform 3.0
@@ -55,8 +49,7 @@
 (defmethod print-object ((obj object) stream)
   (print-unreadable-object (obj stream)
     (format stream "COLOR=~A"
-            (gethash (object-color obj)
-                     *color-names*))))
+            (object-color obj))))
 
 (defparameter *welcome-text*
   "Welcome to the image-based development!")
@@ -88,11 +81,60 @@
                       0.1)
                    +maroon+)
 
-  (let* ((speed *speed*)
-         (x (* (object-distance obj)
+
+
+  
+  (let* ((base-distance (object-distance obj))
+         (distance
+           (+ base-distance
+              (sin (* (/ (get-internal-real-time)
+                         internal-time-units-per-second)
+                      10))))
+         (speed (* *speed*
+                   (relative-speed obj)))
+         (x (* distance
                (cos (* (get-internal-real-time)
                        speed))))
-         (y (* (object-distance obj)
+         (y (* distance
+               (sin (* (get-internal-real-time)
+                       speed))))
+         (z 0)
+         (new-pos (vec x y z)))
+    (setf (object-position obj)
+          new-pos)))
+
+
+
+
+
+
+
+(defun draw-object (obj)
+  (draw-cube (object-position obj)
+             (object-size obj)
+             (object-size obj)
+             (object-size obj)
+             (object-color obj))
+  (draw-cube-wires (object-position obj)
+                   (+ (object-size obj)
+                      0.1)
+                   (+ (object-size obj)
+                      0.1)
+                   (+ (object-size obj)
+                      0.1)
+                   +maroon+)
+
+  (let* ((base-distance (object-distance obj))
+         (distance (+ base-distance
+                      (sin (* (/ (get-internal-real-time)
+                                 internal-time-units-per-second)
+                              10))))
+         (speed (* *speed*
+                   (relative-speed obj)))
+         (x (* distance
+               (cos (* (get-internal-real-time)
+                       speed))))
+         (y (* distance
                (sin (* (get-internal-real-time)
                        speed))))
          (z 0)
@@ -155,19 +197,15 @@
                         :color raylib:+green+
                         :distance 4.0
                         :size 1.0)
+         ;; (make-instance 'object
+         ;;                :pos (vec 3 4 0)
+         ;;                :color raylib:+blue+
+         ;;                :distance 7.0
+         ;;                :size 0.5)
          )))
-
-;; Заготовочка
-#+nil
-(progn
-  (make-instance 'object
-                 :pos (vec 3 4 0)
-                 :color raylib:+blue+
-                 :distance 7.0
-                 :size 0.5))
 
 
 (defun main ()
   (40ants-slynk:start-slynk-if-needed)
-  ;; (init-world)
+  (init-world)
   (game-loop))
